@@ -1,16 +1,15 @@
 {
-  "name": "solutech",
+  "name": "travel-booking-tests",
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-     "test": "cucumber-js"
+    "test": "cucumber-js",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "@cucumber/cucumber": "^11.2.0"
+  "dependencies": {
+    "@cucumber/cucumber": "^7.3.2",
+    "chai": "^4.5.0",
+    "cypress": "^10.0.0",
+    "playwright": "^1.20.0"
   }
 }

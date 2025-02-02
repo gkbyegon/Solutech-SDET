@@ -1,90 +1,130 @@
-// Importing necessary Cucumber functions
-const { Given, When, Then } = require('@cucumber/cucumber');
-const assert = require('assert');
+// // const { Given, When, Then } = require('@cucumber/cucumber');
 
-// In-memory data storage for simplicity
-let bookings = [];
-let tours = [];
-let currentBookingNumber = 1000;
+// // Given('the user navigates to the login page', function () {
+// //   browser.url('http://127.0.0.1:8000/');
+// // });
+// // // // Step Definitions for Login
+// // // Given('the user navigates to the login page', function () {
+// // //   browser.url('https://yourapp.com/login');
+// // // });
+// // // When('I enter invalid credentials', async () => {
+// // //   await loginPage.login('invalidUser', 'invalidPass');
+// // // });
 
-// Step 1: Given the user is on the home page
-Given('the user is on the home page', function () {
-  // This represents the user navigating to the home page.
-  // In a real app, this would trigger a UI action like a button click.
-  console.log('User is on the home page');
-});
+// // // Then('I should see an error message {string}', async (errorMessage) => {
+// // //   const message = await loginPage.getErrorMessage();
+// // //   expect(message).to.equal(errorMessage);
+// // // });
 
-// Step 2: When the user selects a tour and clicks on "Book Now"
-When('the user selects a tour and clicks on "Book Now"', function () {
-  // Simulate the user selecting a tour and initiating the booking process.
-  // We are assuming that the selected tour is "Adventure Trip" with some data.
-  this.selectedTour = {
-    tourName: 'Adventure Trip',
-    pricing: 500,
-    availableSlots: 20
-  };
-  console.log('User selected the Adventure Trip tour');
-});
+// // // // Step Definitions for Tour Booking
+// // // Given('I am on the home page of {string}', async (url) => {
+// // //   await homePage.open(url);
+// // // });
 
-// Step 3: When the user fills in the booking details as a guest
-When('the user fills in the booking details as a guest', function (dataTable) {
-  // Here we extract the booking details (name, email, phone, number of people)
-  const bookingDetails = dataTable.rowsHash();
-  
-  // Save the booking details to `this.bookingDetails` for further use.
-  this.bookingDetails = {
-    name: bookingDetails.name,
-    email: bookingDetails.email,
-    phone: bookingDetails.phone,
-    numberOfPeople: parseInt(bookingDetails.number_of_people, 10)
-  };
-  
-  console.log('Booking details entered:', this.bookingDetails);
-});
+// // // When('I create a tour booking as a guest', async () => {
+// // //   await homePage.bookTourAsGuest('Paris', 2);
+// // // });
 
-// Step 4: When the user selects the payment option and clicks on "Confirm Booking"
-When('the user selects payment option and clicks on "Confirm Booking"', function () {
-  // Here, we simulate confirming the booking by generating a unique booking number
-  // and saving the booking information in memory.
-  this.bookingNumber = ++currentBookingNumber;
-  
-  // Save the booking details, including a unique booking number.
-  const booking = {
-    bookingNumber: this.bookingNumber,
-    tourName: this.selectedTour.tourName,
-    name: this.bookingDetails.name,
-    status: 'Confirmed',
-    numberOfPeople: this.bookingDetails.numberOfPeople
-  };
-  
-  // Add the booking to the bookings array
-  bookings.push(booking);
-  console.log(`Booking confirmed with booking number: ${this.bookingNumber}`);
-});
+// // // Then('I should see a confirmation message {string}', async (confirmationMessage) => {
+// // //   const message = await homePage.getConfirmationMessage();
+// // //   expect(message).to.equal(confirmationMessage);
+// // // });
 
-// Step 5: Then the system should generate a booking for the user
-Then('the system should generate a booking for the user', function () {
-  // Assert that a booking has been created
-  assert.strictEqual(bookings.length, 1, 'No booking was generated');
-});
+// // // // Step Definitions for Admin Panel
+// // // Given('I am on the admin panel', async () => {
+// // //   await adminPage.open();
+// // // });
 
-// Step 6: Then the user should receive a booking confirmation with booking details
-Then('the user should receive a booking confirmation with booking details', function () {
-  // Assert that the booking status is "Confirmed"
-  const booking = bookings[0];
-  assert.strictEqual(booking.status, 'Confirmed', 'Booking status should be confirmed');
-  
-  console.log('Booking confirmed:', booking);
-});
+// // // When('I create a new tour with the following details:', async (dataTable) => {
+// // //   const tourDetails = dataTable.rowsHash();
+// // //   await adminPage.createTour(tourDetails.destination, tourDetails.description, tourDetails.price, tourDetails.slots);
+// // // });
 
-// Step 7: Then the booking should include a unique booking number
-Then('the booking should include a unique booking number', function () {
-  // Ensure that the booking has a valid booking number
-  assert.ok(this.bookingNumber, 'Booking number should be generated');
-});
+// // // Then('the tour should be available in the list of tours', async () => {
+// // //   const tourList = await adminPage.getTourList();
+// // //   expect(tourList).to.include('Paris');
+// // // });
 
-// Step 8: Then the user should be redirected to a "Thank You" page
-Then('the user should be redirected to a "Thank You" page', function () {
-  // Simulating the user being redirected after a successful booking.
-  console.log('User is redirected to the Thank You page');
-});
+// // // // Step Definitions for Bookings and Tickets
+// // // Given('I am an authenticated user', async () => {
+// // //   await bookingPage.login('testUser', 'testPass');
+// // // });
+
+// // // When('I access the list of bookings', async () => {
+// // //   await bookingPage.viewBookings();
+// // // });
+
+// // // Then('I should see all the bookings made by users', async () => {
+// // //   const bookings = await bookingPage.getBookings();
+// // //   expect(bookings.length).to.be.greaterThan(0);
+// // // });
+
+// // // When('I access the list of tickets', async () => {
+// // //   await ticketPage.viewTickets();
+// // // });
+
+// // // Then('I should see all the tickets generated from bookings', async () => {
+// // //   const tickets = await ticketPage.getTickets();
+// // //   expect(tickets.length).to.be.greaterThan(0);
+// // // });
+
+// const { Given, When, Then } = require('@cucumber/cucumber');
+
+// // Given steps
+// Given('the user is on the home page', function () {
+//   // Navigate to the home page
+//   browser.url('http://127.0.0.1:8000/');
+// });
+
+// When('the user selects a tour and clicks on {string}', function (tourName) {
+//   // Simulate selecting a tour and clicking on "Book Tour"
+//   const tourElement = $(`#tour-${tourName}`);
+//   tourElement.click();
+// });
+
+// When('the user fills in the booking details as a guest', function (dataTable) {
+//   // Example of filling booking details
+//   const bookingDetails = dataTable.hashes()[0]; // Convert dataTable to an array of hashes
+//   $('#slots').setValue(bookingDetails['Please enter the number of slots you are booking.']);
+//   $('#name').setValue(bookingDetails['Please enter the ticket holder name.']);
+//   $('#email').setValue(bookingDetails['Email Address']);
+//   $('#total').setValue(bookingDetails['Total Ksh']);
+// });
+
+// When('the user clicks on {string}', function (buttonName) {
+//   // Simulate clicking a button (e.g., "Book Tour")
+//   const button = $(`#${buttonName}-button`);
+//   button.click();
+// });
+
+// // Then steps
+// Then('the system should generate a booking for the user', function () {
+//   // Verify if the booking was generated successfully
+//   const bookingConfirmation = $('#booking-confirmation');
+//   expect(bookingConfirmation).toExist();
+// });
+
+// Then('the user should receive a booking confirmation with booking details', function () {
+//   // Verify if the confirmation message contains booking details
+//   const confirmationMessage = $('#confirmation-message');
+//   expect(confirmationMessage).toContainText('Booking confirmed');
+// });
+
+// Then('the booking should include a unique Ticket Number', function () {
+//   // Verify if the booking has a unique ticket number
+//   const ticketNumber = $('#ticket-number');
+//   expect(ticketNumber).toExist();
+//   expect(ticketNumber.getText()).not.toBeNull();
+// });
+
+// Then('the user selects confirm option and clicks on {string}', function (confirmOption) {
+//   // Simulate selecting a confirm option and clicking "Done"
+//   const confirmButton = $(`#${confirmOption}-button`);
+//   confirmButton.click();
+// });
+
+// Then('the user should be redirected to a Landing page', function () {
+//   // Verify that the user is redirected to the Landing page
+//   const landingPageUrl = 'https://yourapp.com/landing';
+//   expect(browser.getUrl()).toBe(landingPageUrl);
+// });

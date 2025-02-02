@@ -1,0 +1,60 @@
+name: Cucumber and Cypress tests
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Cucumber Tests
+        run: npm test
+
+      - name: Run Cypress Tests
+        run: npm run cypress:run
+
+# name: Cypress Tests
+# on: push
+# jobs:
+#  Cypress-Test:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout GitCode
+#        uses: actions/checkout@v2
+ 
+#      - name: Run Cypress Test
+#        uses: cypress-io/github-action@v4
+#        with:
+#          command: npm run test:registerTest
+#      - name: Cypress Test Report
+#        uses: actions/upload-artifact@v4
+#       # if: always ()
+#        with:
+#          name: Cypress execution report
+#          path: cypress/reports/html # or path/to/artifact
+#          #retention-days:30
+
+#          #browser: chrome
+#      - name: Slack Notification
+#        uses: rtCamp/action-slack-notify@v2
+#        env:
+#         SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
+#         SLACK_ICON: https://github.com/rtCamp.png?size=48
+#         SLACK_MESSAGE: 'Cypress Test Automation Report https://github.com/pkoriris/cypress-gha-tests/actions/runs/11416125401/job/${{github.run_id}}'
+#         SLACK_TITLE: Cypress Tests
+#         SLACK_USERNAME: isronoh
+#         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
