@@ -21,8 +21,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run Cucumber Tests
-        run: npm test
+      # - name: Run Cucumber Tests
+      #   run: npm test
 
       - name: Run Cypress Tests
         run: npm run cypress:run
@@ -54,7 +54,7 @@ jobs:
 #        env:
 #         SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
 #         SLACK_ICON: https://github.com/rtCamp.png?size=48
-#         SLACK_MESSAGE: 'Cypress Test Automation Report https://github.com/pkoriris/cypress-gha-tests/actions/runs/11416125401/job/${{github.run_id}}'
+#         SLACK_MESSAGE: 'Cypress Test Automation Report https://github.com/gkbyegon/cypress-gha-tests/actions/runs/11416125401/job/${{github.run_id}}'
 #         SLACK_TITLE: Cypress Tests
 #         SLACK_USERNAME: isronoh
 #         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}

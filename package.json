@@ -2,14 +2,19 @@
   "name": "travel-booking-tests",
   "version": "1.0.0",
   "scripts": {
-    "test": "cucumber-js",
-    "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "test:bookTour": "npx cypress run --spec C:/Users/Admin/OneDrive/Solutech/cypress/e2e/bookTour.cy.js",
+    "test:loginInvalidTest": "npx cypress run --spec C:/Users/Admin/OneDrive/Solutech/cypress/e2e/loginInvalidTest.cy.js",
+    "test:registerTest": "npx cypress run --spec C:/Users/Admin/OneDrive/Solutech/cypress/e2e/loginTest.cy.js",
+    "test:viewTicket": "npx cypress run --spec C:/Users/Admin/OneDrive/Solutech/cypress/e2e/viewTicket.cy.js",
+    "test:createTour": "npx cypress run --spec C:/Users/Admin/OneDrive/Solutech/cypress/e2e/createTour.cy.js",
+    "test:viewBooking": "npx cypress run --spec C:/Users/Admin/OneDrive/Solutech/cypress/e2e/viewBooking.cy.js"
   },
   "dependencies": {
     "@cucumber/cucumber": "^7.3.2",
     "chai": "^4.5.0",
-    "cypress": "^10.0.0",
     "playwright": "^1.20.0"
+  },
+  "devDependencies": {
+    "cypress": "^14.0.2"
   }
 }

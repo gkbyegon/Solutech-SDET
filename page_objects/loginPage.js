@@ -1,21 +1,32 @@
-class LoginPage {
-    visit() {
-      cy.visit('http://127.0.0.1:8000/');
-    }
-  
-    enterCredentials(username, password) {
-      cy.get('input[name="username"]').type(username);
-      cy.get('input[name="password"]').type(password);
-    }
-  
-    submit() {
-      cy.get('button[type="submit"]').click();
-    }
-  
-    getErrorMessage() {
-      return cy.get('.error-message').invoke('text');
-    }
+export class loginPage{
+
+  //Store locators
+
+  weblocators={
+
+     Username:'#email',
+      Password:'#password',
+      login:'button[type="submit"]'
   }
-  
-  module.exports = new LoginPage();
-  
+  openURL(){
+
+      cy.visit(Cypress.env('URL'))
+  }
+
+  Username(email) {
+
+     cy.get(this.weblocators.Username,{ timeout: 15000 }).type(email)
+
+  }
+  Password(pwd) {
+
+      cy.get(this.weblocators.Password,{ timeout: 15000 }).type(pwd)
+      
+    }
+    
+    clickonLogin() {
+
+      cy.get(this.weblocators.login,{ timeout: 15000 }).click()
+      
+    } 
+}
