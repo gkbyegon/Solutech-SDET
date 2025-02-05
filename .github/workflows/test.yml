@@ -1,6 +1,9 @@
-name: Cucumber and Cypress tests
+name: Cypress tests
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
