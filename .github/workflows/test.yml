@@ -11,7 +11,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-
+env:
+      FIXTURE_PATH: 'C:/Users/Admin/OneDrive/Solutech/cypress/fixtures'
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
