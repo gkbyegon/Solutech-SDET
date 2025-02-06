@@ -82,7 +82,7 @@ export class createTour{
      } 
      Submit() {
  
-      cy.get(this.weblocators.submit,{ timeout: 20000 }).eq(1).click()
+      cy.get(this.weblocators.submit,{ timeout: 20000 }).eq(1).click({ force: true });
       
     } 
 }

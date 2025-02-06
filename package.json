@@ -8,12 +8,14 @@
     "test:registerTest": "npx cypress run --spec C:/Users/Admin/OneDrive/Solutech/cypress/e2e/loginTest.cy.js",
     "test:viewTicket": "npx cypress run --spec C:/Users/Admin/OneDrive/Solutech/cypress/e2e/viewTicket.cy.js",
     "test:createTour": "npx cypress run --spec C:/Users/Admin/OneDrive/Solutech/cypress/e2e/createTour.cy.js",
-    "test:viewBooking": "npx cypress run --spec C:/Users/Admin/OneDrive/Solutech/cypress/e2e/viewBooking.cy.js"
+    "test:viewBooking": "npx cypress run --spec C:/Users/Admin/OneDrive/Solutech/cypress/e2e/viewBooking.cy.js",
+    "test": "cucumber-js"
   },
   "dependencies": {
     "@cucumber/cucumber": "^7.3.2",
     "chai": "^4.5.0",
-    "playwright": "^1.20.0"
+    "playwright": "^1.20.0",
+    "webdriverio": "^9.7.3"
   },
   "devDependencies": {
     "cypress": "^14.0.2"
